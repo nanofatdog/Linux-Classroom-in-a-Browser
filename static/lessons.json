@@ -1,0 +1,203 @@
+[
+    {
+        "title": "บทที่ 1: การดูไฟล์และโฟลเดอร์",
+        "content": "<p>คำสั่งพื้นฐานที่สุดคือ <code>ls</code> (list) ใช้สำหรับดูว่าในตำแหน่งปัจจุบันมีไฟล์หรือโฟลเดอร์อะไรบ้าง</p><p>ลองพิมพ์: <code>ls -l</code> เพื่อดูข้อมูลแบบละเอียด</p><p>หรือ: <code>ls -a</code> เพื่อดูไฟล์ที่ซ่อนอยู่</p>"
+    },
+    {
+        "title": "บทที่ 2: ฉันอยู่ที่ไหน?",
+        "content": "<p>ใช้คำสั่ง <code>pwd</code> (print working directory) เพื่อแสดงตำแหน่ง (path) ของโฟลเดอร์ที่คุณกำลังทำงานอยู่</p>"
+    },
+    {
+        "title": "บทที่ 3: การเปลี่ยนโฟลเดอร์",
+        "content": "<p>ใช้คำสั่ง <code>cd</code> (change directory) เพื่อย้ายไปยังโฟลเดอร์อื่น</p><p>ลองพิมพ์: <code>cd /</code> เพื่อไปที่ตำแหน่งบนสุด (root)</p><p>แล้วพิมพ์: <code>cd ~</code> หรือแค่ <code>cd</code> เพื่อกลับมาที่บ้าน (home)</p>"
+    },
+    {
+        "title": "บทที่ 4: การสร้างโฟลเดอร์",
+        "content": "<p>ใช้คำสั่ง <code>mkdir</code> (make directory) เพื่อสร้างโฟลเดอร์ใหม่</p><p>ลองพิมพ์: <code>mkdir my_project</code> แล้วตามด้วย <code>ls</code> เพื่อดูผลลัพธ์</p>"
+    },
+    {
+        "title": "บทที่ 5: การสร้างไฟล์ว่าง",
+        "content": "<p>ใช้คำสั่ง <code>touch</code> เพื่อสร้างไฟล์เปล่าๆ ขึ้นมา</p><p>ลองพิมพ์: <code>touch report.txt</code></p>"
+    },
+    {
+        "title": "บทที่ 6: การดูเนื้อหาไฟล์",
+        "content": "<p>ใช้คำสั่ง <code>cat</code> (concatenate) เพื่อแสดงเนื้อหาทั้งหมดของไฟล์ออกมาในเทอร์มินัล</p><p>ลองพิมพ์: <code>cat /etc/passwd</code> (นี่คือไฟล์ตัวอย่างที่มีอยู่ในระบบ)</p>"
+    },
+    {
+        "title": "บทที่ 7: การเขียนข้อความลงไฟล์",
+        "content": "<p>เราใช้สัญลักษณ์ <code>></code> และ <code>>></code> ร่วมกับคำสั่งอื่นเพื่อเขียนทับหรือต่อท้ายไฟล์</p><p>ลองพิมพ์: <code>echo \"Hello World\" > hello.txt</code></p><p>แล้วใช้ <code>cat hello.txt</code> เพื่อดูผลลัพธ์</p>"
+    },
+    {
+        "title": "บทที่ 8: การคัดลอกไฟล์",
+        "content": "<p>ใช้คำสั่ง <code>cp</code> (copy) เพื่อคัดลอกไฟล์</p><p>ลองพิมพ์: <code>cp hello.txt greeting.txt</code> แล้วใช้ <code>ls</code> เพื่อดูว่ามีไฟล์ใหม่เกิดขึ้น</p>"
+    },
+    {
+        "title": "บทที่ 9: การย้ายหรือเปลี่ยนชื่อไฟล์",
+        "content": "<p>ใช้คำสั่ง <code>mv</code> (move) เพื่อย้ายหรือเปลี่ยนชื่อไฟล์</p><p>ลองพิมพ์: <code>mv greeting.txt hi.txt</code> เพื่อเปลี่ยนชื่อไฟล์</p>"
+    },
+    {
+        "title": "บทที่ 10: การลบไฟล์และโฟลเดอร์",
+        "content": "<p>ใช้ <code>rm</code> (remove) เพื่อลบไฟล์ และ <code>rmdir</code> (remove directory) เพื่อลบโฟลเดอร์ว่าง</p><p><b>โปรดระวัง! คำสั่งนี้ไม่มีถังขยะ</b></p><p>ลองพิมพ์: <code>rm hi.txt</code> เพื่อลบไฟล์</p>"
+    },
+    {
+        "title": "บทที่ 11: Linux - การค้นหาข้อความด้วย grep",
+        "content": "<p><code>grep</code> เป็นเครื่องมือที่ทรงพลังสำหรับค้นหาข้อความภายในไฟล์</p><p>ลองค้นหาคำว่า 'student' ในไฟล์ <code>/etc/passwd</code>:</p><p><code>grep student /etc/passwd</code></p>"
+    },
+    {
+        "title": "บทที่ 12: Linux - การค้นหาไฟล์ด้วย find",
+        "content": "<p>ใช้คำสั่ง <code>find</code> เพื่อค้นหาไฟล์และโฟลเดอร์ตามเงื่อนไขต่างๆ</p><p>ลองค้นหาไฟล์ทั้งหมดที่มีชื่อ 'hello.txt' ในตำแหน่งปัจจุบัน:</p><p><code>find . -name hello.txt</code></p>"
+    },
+    {
+        "title": "บทที่ 13: Linux - การเชื่อมคำสั่งด้วย Pipe (|)",
+        "content": "<p>เครื่องหมาย Pipe <code>|</code> ใช้สำหรับส่งผลลัพธ์ของคำสั่งหนึ่ง ไปเป็น input ของอีกคำสั่งหนึ่ง</p><p>ลองแสดงรายการไฟล์ทั้งหมด แล้วค้นหาเฉพาะไฟล์ที่มีคำว่า 'hello':</p><p><code>ls -l | grep hello</code></p>"
+    },
+    {
+        "title": "บทที่ 14: Linux - การเปลี่ยนสิทธิ์ (Permission)",
+        "content": "<p>ใช้คำสั่ง <code>chmod</code> เพื่อเปลี่ยนสิทธิ์การเข้าถึงไฟล์</p><p>สร้างไฟล์ script ขึ้นมาก่อน: <code>echo '#!/bin/bash' > script.sh</code></p><p>ทำให้ไฟล์นี้สามารถรันได้ (add execute permission):</p><p><code>chmod +x script.sh</code></p><p>ตอนนี้ลองใช้ <code>ls -l script.sh</code> จะเห็นว่ามีสิทธิ์ 'x' เพิ่มขึ้นมา</p>"
+    },
+    {
+        "title": "บทที่ 15: Linux - Environment Variables",
+        "content": "<p>Environment variables ใช้สำหรับเก็บค่าต่างๆ ที่โปรแกรมสามารถเรียกใช้ได้</p><p>ลองแสดงค่าของตัวแปร PATH: <code>echo $PATH</code></p><p>ลองสร้างตัวแปรใหม่: <code>export MY_NAME=\"Student\"</code></p><p>แล้วเรียกดูค่า: <code>echo $MY_NAME</code></p>"
+    },
+    {
+        "title": "บทที่ 16: Python - เริ่มต้นโหมดโต้ตอบ",
+        "content": "<p>สภาพแวดล้อมนี้ติดตั้ง Python มาให้แล้ว ลองเข้าสู่โหมดโต้ตอบ (interactive mode) โดยพิมพ์:</p><p><code>python</code></p><p>คุณจะเห็น prompt เปลี่ยนเป็น <code>>>></code> ตอนนี้คุณสามารถพิมพ์โค้ด Python ได้แล้ว</p>"
+    },
+    {
+        "title": "บทที่ 17: Python - Hello, Python!",
+        "content": "<p>ในโหมดโต้ตอบของ Python (ที่มี prompt <code>>>></code>), ลองใช้คำสั่ง <code>print()</code> เพื่อแสดงข้อความ</p><p>ลองพิมพ์: <code>print(\"Hello from Python!\")</code></p><p>หากต้องการออกจากโหมดโต้ตอบ ให้พิมพ์ <code>exit()</code> แล้วกด Enter</p>"
+    },
+    {
+        "title": "บทที่ 18: Python - การรันไฟล์",
+        "content": "<p>เราสามารถรันโค้ด Python จากไฟล์ได้ ขั้นแรก, สร้างไฟล์ .py ที่มีโค้ดอยู่ข้างใน:</p><p><code>echo 'print(\"Hello from a file!\")' > my_script.py</code></p><p>จากนั้น, สั่งให้ Python รันไฟล์นี้:</p><p><code>python my_script.py</code></p>"
+    },
+    {
+        "title": "บทที่ 19: Python - การใช้ Pip",
+        "content": "<p><code>pip</code> คือตัวจัดการแพ็กเกจของ Python ใช้สำหรับติดตั้งไลบรารีต่างๆ</p><p>ลองติดตั้งแพ็กเกจสนุกๆ ชื่อ <code>cowsay</code>:</p><p><code>pip install cowsay</code></p><p>จากนั้นลองใช้งานใน Python interactive mode: <code>python</code> แล้วพิมพ์ <code>import cowsay; cowsay.cow('Hello')</code></p>"
+    },
+    {
+        "title": "บทที่ 20: Python - Lists",
+        "content": "<p>List คือข้อมูลที่เรียงลำดับและเปลี่ยนแปลงได้</p><p>เข้าสู่โหมด Python: <code>python</code></p><p>สร้าง List: <code>fruits = [\"apple\", \"banana\", \"cherry\"]</code></p><p>ดูข้อมูลตัวแรก: <code>print(fruits[0])</code></p><p>เพิ่มข้อมูล: <code>fruits.append(\"orange\")</code></p><p>ดูทั้งหมด: <code>print(fruits)</code></p>"
+    },
+    {
+        "title": "บทที่ 21: Python - Dictionaries",
+        "content": "<p>Dictionary คือข้อมูลแบบ key-value</p><p>เข้าสู่โหมด Python: <code>python</code></p><p>สร้าง Dictionary: <code>car = {\"brand\": \"Ford\", \"model\": \"Mustang\", \"year\": 1964}</code></p><p>ดูข้อมูล model: <code>print(car[\"model\"])</code></p>"
+    },
+    {
+        "title": "บทที่ 22: Python - For Loops",
+        "content": "<p>For loop ใช้สำหรับวนซ้ำข้อมูลใน list หรือ range</p><p>สร้างไฟล์: <code>echo 'for i in range(5): print(f\"Number {i}\")' > loop.py</code></p><p>รันไฟล์: <code>python loop.py</code></p>"
+    },
+    {
+        "title": "บทที่ 23: Python - If/Else",
+        "content": "<p>ใช้ if/else เพื่อสร้างเงื่อนไข</p><p>สร้างไฟล์: <code>echo 'age = 20; print(\"Adult\") if age >= 18 else print(\"Minor\")' > condition.py</code></p><p>รันไฟล์: <code>python condition.py</code></p>"
+    },
+    {
+        "title": "บทที่ 24: Python - Functions",
+        "content": "<p>ฟังก์ชันช่วยให้เราจัดระเบียบโค้ดและนำกลับมาใช้ใหม่ได้</p><p>สร้างไฟล์: <code>echo 'def greet(name): print(f\"Hello, {name}\"); greet(\"Alice\")' > func.py</code></p><p>รันไฟล์: <code>python func.py</code></p>"
+    },
+    {
+        "title": "บทที่ 25: Python - การอ่านไฟล์",
+        "content": "<p>เราสามารถอ่านเนื้อหาจากไฟล์ได้</p><p>ขั้นแรก สร้างไฟล์: <code>echo \"Line 1\nLine 2\" > data.txt</code></p><p>สร้าง script อ่านไฟล์: <code>echo 'with open(\"data.txt\", \"r\") as f: print(f.read())' > read_file.py</code></p><p>รัน script: <code>python read_file.py</code></p>"
+    },
+    {
+        "title": "บทที่ 26: Python - สร้าง Web UI ด้วย Gradio",
+        "content": "<p><code>gradio</code> ช่วยให้เราสร้าง Web UI จากฟังก์ชัน Python ได้ง่ายๆ</p><p>สร้างไฟล์แอป: <code>echo 'import gradio as gr; def greet(name): return \"Hello, \" + name; iface = gr.Interface(fn=greet, inputs=\"text\", outputs=\"text\"); iface.launch()' > web_app.py</code></p><p>รันแอป: <code>python web_app.py</code></p><p>คุณจะเห็นลิงก์ Public URL ปรากฏขึ้นมา ลองเปิดในเบราว์เซอร์แท็บใหม่!</p>"
+    },
+    {
+        "title": "บทที่ 27: Rust - เริ่มต้นใช้งาน",
+        "content": "<p>สภาพแวดล้อมนี้ติดตั้ง Rust toolchain มาให้แล้ว ลองตรวจสอบเวอร์ชันของ compiler (rustc) และ build tool (cargo)</p><p><code>rustc --version</code></p><p><code>cargo --version</code></p>"
+    },
+    {
+        "title": "บทที่ 28: Rust - สร้างโปรเจกต์แรก",
+        "content": "<p><code>cargo</code> เป็นเครื่องมือที่ช่วยจัดการโปรเจกต์ Rust ทั้งหมด ลองสร้างโปรเจกต์ใหม่ชื่อ 'hello_rust'</p><p><code>cargo new hello_rust</code></p><p>คำสั่งนี้จะสร้างโฟลเดอร์ใหม่ที่มีโครงสร้างพื้นฐานสำหรับโปรเจกต์ Rust ให้ทันที ลองใช้ <code>ls hello_rust</code> เพื่อดูข้างใน</p>"
+    },
+    {
+        "title": "บทที่ 29: Rust - Build และ Run",
+        "content": "<p>เข้าไปในโฟลเดอร์โปรเจกต์ที่เราเพิ่งสร้าง:</p><p><code>cd hello_rust</code></p><p>จากนั้นใช้ cargo เพื่อ build และ run โปรแกรม 'Hello, world!' ที่ถูกสร้างมาให้เป็นตัวอย่าง</p><p><code>cargo run</code></p><p>Cargo จะทำการ compile โค้ดและรันโปรแกรมผลลัพธ์ให้โดยอัตโนมัติ</p>"
+    },
+    {
+        "title": "บทที่ 30: Rust - ตัวแปรและความสามารถในการเปลี่ยนแปลง",
+        "content": "<p>ใน Rust, ตัวแปรเป็น immutable (เปลี่ยนแปลงไม่ได้) โดยค่าเริ่มต้น</p><p>สร้างโปรเจกต์ใหม่: <code>cargo new variables</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let mut x = 5; println!(\"The value of x is: {}\", x); x = 6; println!(\"The value of x is: {}\", x); }' > variables/src/main.rs</code></p><p>รัน: <code>cd variables && cargo run</code></p><p>เราต้องใช้ <code>mut</code> เพื่อทำให้ตัวแปรเปลี่ยนแปลงค่าได้</p>"
+    },
+    {
+        "title": "บทที่ 31: Rust - Data Types พื้นฐาน",
+        "content": "<p>Rust มีประเภทข้อมูลพื้นฐาน (scalar types) เช่น integers, floats, booleans, และ characters</p><p>สร้างโปรเจกต์: <code>cargo new types</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let num: i32 = -2; let is_rust_fun: bool = true; println!(\"Number: {}, Is Rust fun? {}\", num, is_rust_fun); }' > types/src/main.rs</code></p><p>รัน: <code>cd types && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 32: Rust - Functions",
+        "content": "<p>เราสามารถสร้างฟังก์ชันเพื่อจัดระเบียบโค้ดได้</p><p>สร้างโปรเจกต์: <code>cargo new functions</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { another_function(5); } fn another_function(x: i32) { println!(\"The value is: {}\", x); }' > functions/src/main.rs</code></p><p>รัน: <code>cd functions && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 33: Rust - Control Flow (If/Else)",
+        "content": "<p>ใช้ <code>if</code>, <code>else if</code>, และ <code>else</code> เพื่อสร้างเงื่อนไขการทำงาน</p><p>สร้างโปรเจกต์: <code>cargo new conditions</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let number = 3; if number < 5 { println!(\"condition was true\"); } else { println!(\"condition was false\"); } }' > conditions/src/main.rs</code></p><p>รัน: <code>cd conditions && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 34: Rust - Loops",
+        "content": "<p>Rust มี loop หลายแบบ: <code>loop</code>, <code>while</code>, และ <code>for</code></p><p>สร้างโปรเจกต์: <code>cargo new loops</code></p><p>แก้ไขไฟล์ for loop: <code>echo 'fn main() { let a = [10, 20, 30]; for element in a.iter() { println!(\"the value is: {}\", element); } }' > loops/src/main.rs</code></p><p>รัน: <code>cd loops && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 35: Rust - Ownership",
+        "content": "<p>Ownership คือแนวคิดหลักของ Rust ที่ช่วยจัดการหน่วยความจำได้อย่างปลอดภัย</p><p>ลองดูตัวอย่างที่ทำให้เกิด error: <code>echo 'fn main() { let s1 = String::from(\"hello\"); let s2 = s1; println!(\"{}\", s1); }' > ownership/src/main.rs</code></p><p>เมื่อรัน <code>cargo run</code> จะเกิดข้อผิดพลาดเพราะ `s1` ถูก 'move' ไปให้ `s2` แล้ว ไม่สามารถใช้งานได้อีก</p>"
+    },
+    {
+        "title": "บทที่ 36: Rust - Structs",
+        "content": "<p>Structs ใช้สำหรับสร้างประเภทข้อมูลที่ซับซ้อนขึ้นมาเอง</p><p>สร้างโปรเจกต์: <code>cargo new structs</code></p><p>แก้ไขไฟล์: <code>echo 'struct User { username: String, active: bool } fn main() { let user1 = User { username: String::from(\"user1\"), active: true }; println!(\"Username: {}\", user1.username); }' > structs/src/main.rs</code></p><p>รัน: <code>cd structs && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 37: Rust - Enums and Match",
+        "content": "<p>Enums ให้เรากำหนดประเภทข้อมูลที่สามารถเป็นหนึ่งในหลายๆ รูปแบบได้ และ <code>match</code> ก็เป็นวิธีที่ทรงพลังในการจัดการกับมัน</p><p>สร้างโปรเจกต์: <code>cargo new enums</code></p><p>แก้ไขไฟล์: <code>echo 'enum Coin { Penny, Nickel } fn value_in_cents(coin: Coin) -> u8 { match coin { Coin::Penny => 1, Coin::Nickel => 5, } } fn main() { println!(\"A penny is worth {} cents\", value_in_cents(Coin::Penny)); }' > enums/src/main.rs</code></p><p>รัน: <code>cd enums && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 38: Rust - การใช้ Crates ภายนอก",
+        "content": "<p>เราสามารถเพิ่มไลบรารี (เรียกว่า 'crates') จาก <a href=\\\"https://crates.io\\\" target=\\\"_blank\\\">crates.io</a> ได้</p><p>สร้างโปรเจกต์: <code>cargo new rand_example</code></p><p>เพิ่ม dependency ใน <code>rand_example/Cargo.toml</code>: <code>echo 'rand = \"0.8.5\"' >> rand_example/Cargo.toml</code></p><p>แก้ไขโค้ด: <code>echo 'use rand::Rng; fn main() { let secret_number = rand::thread_rng().gen_range(1..101); println!(\"The secret number is: {}\", secret_number); }' > rand_example/src/main.rs</code></p><p>รัน: <code>cd rand_example && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 39: Rust - การรับ Input จากผู้ใช้",
+        "content": "<p>เราสามารถเขียนโปรแกรมที่โต้ตอบกับผู้ใช้ได้</p><p>สร้างโปรเจกต์: <code>cargo new guessing_game</code></p><p>แก้ไขไฟล์: <code>echo 'use std::io; fn main() { println!(\"Guess a number!\"); let mut guess = String::new(); io::stdin().read_line(&mut guess).expect(\"Failed\"); println!(\"You guessed: {}\", guess); }' > guessing_game/src/main.rs</code></p><p>รัน: <code>cd guessing_game && cargo run</code> แล้วลองพิมพ์อะไรบางอย่าง</p>"
+    },
+    {
+        "title": "บทที่ 40: Rust - การอ่านไฟล์",
+        "content": "<p>ใช้ library มาตรฐาน <code>std::fs</code> เพื่อทำงานกับไฟล์</p><p>สร้างไฟล์ข้อมูล: <code>echo \"Hello, Rust file!\" > poem.txt</code></p><p>สร้างโปรเจกต์: <code>cargo new file_reader</code></p><p>แก้ไขโค้ด: <code>echo 'use std::fs; fn main() { let contents = fs::read_to_string(\"../poem.txt\").expect(\"Error reading\"); println!(\"File content:\\n{}\", contents); }' > file_reader/src/main.rs</code></p><p>รัน: <code>cd file_reader && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 41: Python - Virtual Environments",
+        "content": "<p>Virtual Environment (venv) ช่วยให้เราแยกโปรเจกต์และ dependencies ของแต่ละโปรเจกต์ออกจากกัน</p><p>สร้าง venv: <code>python -m venv myenv</code></p><p>เปิดใช้งาน (Activate): <code>source myenv/bin/activate</code></p><p>คุณจะเห็น <code>(myenv)</code> ขึ้นมาหน้า prompt</p><p>ปิดใช้งาน: <code>deactivate</code></p>"
+    },
+    {
+        "title": "บทที่ 42: Python - การจัดการ Error ด้วย try...except",
+        "content": "<p>ใช้ <code>try...except</code> เพื่อจัดการกับข้อผิดพลาดที่อาจเกิดขึ้นโดยไม่ทำให้โปรแกรมหยุดทำงาน</p><p>สร้างไฟล์: <code>echo 'try: print(10 / 0) except ZeroDivisionError: print(\"You cannot divide by zero!\")' > error_handling.py</code></p><p>รัน: <code>python error_handling.py</code></p>"
+    },
+    {
+        "title": "บทที่ 43: Python - การทำงานกับ OS",
+        "content": "<p>โมดูล <code>os</code> ให้เราทำงานกับฟังก์ชันของระบบปฏิบัติการได้</p><p>เข้าสู่โหมด Python: <code>python</code></p><p>พิมพ์: <code>import os</code></p><p>ดูตำแหน่งปัจจุบัน: <code>os.getcwd()</code></p><p>สร้างโฟลเดอร์: <code>os.mkdir(\"test_dir\")</code></p>"
+    },
+    {
+        "title": "บทที่ 44: Python - รับ Arguments ด้วย sys",
+        "content": "<p>โมดูล <code>sys</code> ช่วยให้เรารับค่า arguments จาก command line ได้</p><p>สร้างไฟล์: <code>echo 'import sys; print(f\"Script name: {sys.argv[0]}\"); print(f\"First argument: {sys.argv[1]}\")' > arguments.py</code></p><p>รันพร้อม argument: <code>python arguments.py hello</code></p>"
+    },
+    {
+        "title": "บทที่ 45: Rust - Tuples",
+        "content": "<p>Tuple คือกลุ่มของค่าที่มีประเภทต่างกันได้ มีขนาดคงที่</p><p>สร้างโปรเจกต์: <code>cargo new tuples</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let tup: (i32, f64, u8) = (500, 6.4, 1); let (x, y, z) = tup; println!(\"The value of y is: {}\", y); }' > tuples/src/main.rs</code></p><p>รัน: <code>cd tuples && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 46: Rust - Arrays",
+        "content": "<p>Array คล้ายกับ Tuple แต่ทุก element ต้องมีประเภทเดียวกัน และมีขนาดคงที่</p><p>สร้างโปรเจกต์: <code>cargo new arrays</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let a = [1, 2, 3, 4, 5]; let first = a[0]; println!(\"The first element is: {}\", first); }' > arrays/src/main.rs</code></p><p>รัน: <code>cd arrays && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 47: Rust - Vectors",
+        "content": "<p>Vector (<code>Vec<T></code>) เป็นเหมือน array ที่สามารถขยายขนาดได้</p><p>สร้างโปรเจกต์: <code>cargo new vectors</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let mut v = vec![1, 2, 3]; v.push(4); println!(\"The first element is: {}\", v[0]); }' > vectors/src/main.rs</code></p><p>รัน: <code>cd vectors && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 48: Rust - Strings",
+        "content": "<p>Rust มีประเภท String สองแบบหลัก: <code>&str</code> (string slice, immutable) และ <code>String</code> (growable, mutable)</p><p>สร้างโปรเจกต์: <code>cargo new strings</code></p><p>แก้ไขไฟล์: <code>echo 'fn main() { let mut s = String::from(\"hello\"); s.push_str(\", world!\"); println!(\"{}\", s); }' > strings/src/main.rs</code></p><p>รัน: <code>cd strings && cargo run</code></p>"
+    },
+    {
+        "title": "บทที่ 49: Rust - Error Handling ด้วย Result",
+        "content": "<p><code>Result<T, E></code> เป็น enum ที่ใช้สำหรับจัดการกับ error ที่อาจเกิดขึ้นได้</p><p>สร้างโปรเจกต์: <code>cargo new error_handling</code></p><p>แก้ไขไฟล์: <code>echo 'use std::fs::File; fn main() { let f = File::open(\"hello.txt\"); let f = match f { Ok(file) => file, Err(error) => panic!(\"Problem opening file: {:?}\", error), }; }' > error_handling/src/main.rs</code></p><p>รัน: <code>cd error_handling && cargo run</code> (จะเกิด panic เพราะไฟล์ไม่มีอยู่จริง)</p>"
+    },
+    {
+        "title": "บทที่ 50: ขอแสดงความยินดี!",
+        "content": "<p>คุณได้เรียนรู้พื้นฐานที่สำคัญของ Linux, Python, และ Rust แล้ว!</p><p>นี่เป็นเพียงจุดเริ่มต้น ยังมีอะไรให้เรียนรู้อีกมากมาย ลองใช้ความรู้ที่ได้ไปสร้างโปรเจกต์เล็กๆ ของตัวเองดูสิ</p><p><b>ขอให้สนุกกับการเขียนโค้ด!</b></p>"
+    }
+]
+
