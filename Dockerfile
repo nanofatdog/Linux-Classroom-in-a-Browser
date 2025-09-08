@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python-is-python3 \
     build-essential \
-    gradio \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user 'student' for security
@@ -28,7 +27,7 @@ WORKDIR /home/student
 
 # Install the Rust toolchain (rustc, cargo, etc.) using the official rustup installer
 # The '-y' flag automates the installation process
-RUN curl --proto '=https' --tlsv1.2 -sSf [https://sh.rustup.rs](https://sh.rustup.rs) | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Add Cargo's bin directory to the PATH environment variable.
 # This makes 'rustc' and 'cargo' commands available in the shell.
