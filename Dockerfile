@@ -1,13 +1,10 @@
-# Use the official Ubuntu 24.04 as a base image
-FROM ubuntu:24.04
+# Use the official Ubuntu 22.04 as a base image
+FROM ubuntu:22.04
 
 # Set a non-interactive frontend for package installations to avoid prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update package lists and install necessary software
-# - build-essential is required for Rust and other compiled languages
-# - python-is-python3 allows using the 'python' command
-# - python3-pip provides the 'pip' command
 RUN apt-get update && apt-get install -y \
     nano \
     curl \
@@ -17,6 +14,10 @@ RUN apt-get update && apt-get install -y \
     python-is-python3 \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
+
+# ** FIX: Remove the file that enables the 'externally-managed' environment error **
+# This makes pip work globally, which is simpler for a learning environment.
+RUN find /usr/lib/ -name "EXTERNALLY-MANAGED" -exec rm {} \;
 
 # Create a non-root user 'student' for security
 RUN useradd -m student
@@ -36,4 +37,3 @@ ENV PATH="/home/student/.cargo/bin:${PATH}"
 # The command to run when the container starts. It will launch a bash shell
 # as the 'student' user with the updated PATH.
 CMD ["/bin/bash"]
-
