@@ -28,7 +28,7 @@ WORKDIR /home/student
 
 # Install the Rust toolchain (rustc, cargo, etc.) using the official rustup installer
 # The '-y' flag automates the installation process
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf [https://sh.rustup.rs](https://sh.rustup.rs) | sh -s -- -y
 
 # Add Cargo's bin directory to the PATH environment variable.
 # This makes 'rustc' and 'cargo' commands available in the shell.
@@ -37,13 +37,4 @@ ENV PATH="/home/student/.cargo/bin:${PATH}"
 # The command to run when the container starts. It will launch a bash shell
 # as the 'student' user with the updated PATH.
 CMD ["/bin/bash"]
-```
-
-### **สิ่งที่คุณต้องทำต่อ**
-
-1.  **อัปเดตไฟล์:** กรุณาคัดลอกเนื้อหาทั้งหมดจากไฟล์ `Dockerfile` ใหม่ด้านบน ไปวางทับไฟล์ `Dockerfile` เดิมของคุณ
-2.  **ติดตั้งใหม่:** เปิดเทอร์มินัลของเครื่องคอมพิวเตอร์คุณ แล้วรันสคริปต์ `install.py` อีกครั้ง:
-    ```bash
-    python install.py
-    
 
