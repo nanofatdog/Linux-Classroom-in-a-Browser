@@ -12,9 +12,12 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     python3 \
+    python3-pip \
     python-is-python3 \
     build-essential \
+    gradio \
     && rm -rf /var/lib/apt/lists/*
+
 
 # Create a non-root user 'student' for security
 RUN useradd -m student
