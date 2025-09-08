@@ -1,0 +1,8 @@
+# Flask framework for the web server
+Flask
+
+# WebSocket support for Flask
+Flask-Sock
+
+# Docker SDK for Python to interact with the Docker daemon
+docker
