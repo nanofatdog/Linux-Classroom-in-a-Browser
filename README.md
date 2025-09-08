@@ -3,7 +3,7 @@
 **Linux Classroom** คือเว็บแอปพลิเคชันที่สร้างสภาพแวดล้อมการเรียนรู้ Linux แบบโต้ตอบได้ (Interactive) โดยตรงบนเว็บเบราว์เซอร์ เหมาะสำหรับใช้เป็นเครื่องมือฝึกสอน, จัด Workshop, หรือให้ผู้ที่สนใจได้ทดลองใช้คำสั่ง Linux, Python, และ Rust ได้อย่างปลอดภัยและสะดวกสบาย โดยไม่ต้องติดตั้งอะไรบนเครื่องคอมพิวเตอร์ของผู้เรียน
 
 แต่ละเซสชันของผู้ใช้จะถูกแยกออกจากกันอย่างสมบูรณ์ใน Docker container ส่วนตัว ทำให้ผู้เรียนสามารถทดลองทุกอย่างได้อย่างอิสระโดยไม่ส่งผลกระทบต่อระบบหลักหรือผู้ใช้งานคนอื่น
-![image](https://github.com/nanofatdog/Linux-Classroom-in-a-Browser/blob/main/image/demo1.png)
+
 
 
 ## ✨ คุณสมบัติเด่น (Features)
@@ -40,9 +40,11 @@
     * **สำคัญ:** หลังจากติดตั้งเสร็จสิ้น ต้องเปิดโปรแกรม Docker Desktop ขึ้นมา และรอจนไอคอนรูปวาฬที่ Taskbar นิ่งและขึ้นสถานะว่า "Running"
 
 2.  **Python 3:**
-    * **วิธีที่ 1 (แนะนำ):** ติดตั้งจาก **Microsoft Store** โดยค้นหา "Python 3.11" (หรือเวอร์ชันล่าสุด) แล้วกดติดตั้ง วิธีนี้จะตั้งค่า PATH ให้โดยอัตโนมัติ
-    * **วิธีที่ 2:** ดาวน์โหลดและติดตั้งจาก [python.org](https://www.python.org/downloads/windows/)
-        * **สำคัญ:** หากติดตั้งด้วยวิธีนี้ ในหน้าจอแรกของการติดตั้ง ให้ติ๊กช่อง **"Add Python to PATH"** ก่อนกด "Install Now"
+    * **ทางเลือกที่ 1 (ใช้ Conda/Anaconda):** หากคุณใช้ Anaconda/Miniconda อยู่แล้ว คุณสามารถข้ามขั้นตอนนี้ไปได้เลย
+    * **ทางเลือกที่ 2 (ใช้ Python ปกติ):**
+        * **วิธีที่ 1 (แนะนำ):** ติดตั้งจาก **Microsoft Store** โดยค้นหา "Python 3.11" (หรือเวอร์ชันล่าสุด) แล้วกดติดตั้ง วิธีนี้จะตั้งค่า PATH ให้โดยอัตโนมัติ
+        * **วิธีที่ 2:** ดาวน์โหลดและติดตั้งจาก [python.org](https://www.python.org/downloads/windows/)
+            * **สำคัญ:** หากติดตั้งด้วยวิธีนี้ ในหน้าจอแรกของการติดตั้ง ให้ติ๊กช่อง **"Add Python to PATH"** ก่อนกด "Install Now"
 
 #### **สำหรับ Linux (Ubuntu/Debian):**
 
@@ -57,6 +59,8 @@
     ```
 
 2.  **Python 3 & Pip:**
+    * **ทางเลือกที่ 1 (ใช้ Conda/Anaconda):** หากคุณใช้ Anaconda/Miniconda อยู่แล้ว คุณสามารถข้ามขั้นตอนนี้ไปได้เลย
+    * **ทางเลือกที่ 2 (ใช้ Python ปกติ):**
     ```bash
     sudo apt-get install python3 python3-pip -y
     ```
@@ -69,8 +73,35 @@
     cd linux-classroom
     ```
 
-2.  **ติดตั้ง Python libraries:**
-    * ใช้ไฟล์ `requirements.txt` ที่เตรียมไว้ให้เพื่อติดตั้ง library ที่จำเป็นทั้งหมด
+2.  **ตั้งค่า Environment และติดตั้ง Libraries:**
+    * เลือกทำตามวิธีใดวิธีหนึ่งด้านล่างนี้
+
+    #### **วิธี A: สำหรับผู้ใช้ Conda/Anaconda (แนะนำ)**
+    * สร้าง environment ใหม่ชื่อ `linux-class` และติดตั้ง Python:
+    ```bash
+    conda create --name linux-class python=3.11 -y
+    ```
+    * เปิดใช้งาน environment:
+    ```bash
+    conda activate linux-class
+    ```
+    * ติดตั้ง libraries ที่จำเป็นด้วย pip ภายใน environment ของ conda:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    #### **วิธี B: สำหรับผู้ใช้ Python ปกติ (pip)**
+    * (แนะนำ) สร้างและเปิดใช้งาน Virtual Environment:
+    ```bash
+    # สำหรับ Linux/macOS
+    python3 -m venv venv
+    source venv/bin/activate
+    
+    # สำหรับ Windows
+    python -m venv venv
+    .\\venv\\Scripts\\activate
+    ```
+    * ติดตั้ง libraries ที่จำเป็น:
     ```bash
     pip install -r requirements.txt
     ```
@@ -83,6 +114,8 @@
     คุณจะเห็นขั้นตอนการดาวน์โหลดและติดตั้งโปรแกรมต่างๆ แสดงขึ้นมาบนหน้าจอ
 
 ### **3. เริ่มใช้งานเซิร์ฟเวอร์**
+
+* **สำคัญ:** หากคุณใช้ Conda/venv อย่าลืม `conda activate linux-class` หรือ `source venv/bin/activate` ก่อนรันเซิร์ฟเวอร์ทุกครั้ง!
 
 * **รันแบบปกติ (ที่ Port 5000):**
     ```bash
