@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Classroom</title>
+    <!-- Load Xterm.js library and addons for terminal functionality -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.min.js"></script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        #lesson-panel {
+            width: 450px; /* กำหนดความกว้างตายตัวสำหรับกล่องบทเรียน */
+            flex-shrink: 0; /* ป้องกันไม่ให้กล่องนี้หดตัวเมื่อหน้าจอแคบลง */
+            padding: 25px;
+            background-color: #ffffff;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #ddd;
+        }
+        #terminal-container {
+            flex-grow: 1; /* กำหนดให้กล่องนี้ยืดเพื่อเติมพื้นที่ที่เหลือทั้งหมด */
+            padding: 10px;
+            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            min-width: 0; /* ช่วยให้ flexbox คำนวณขนาดได้ถูกต้อง */
+        }
+        .xterm {
+            height: 100% !important;
+        }
+        h2 {
+            border-bottom: 2px solid #5a67d8;
+            padding-bottom: 10px;
+            color: #2d3748;
+        }
+        .lesson-content {
+            margin-top: 15px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4c51bf;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #434190;
+        }
+        button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+        code {
+            background-color: #edf2f7;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <div id="lesson-panel">
+        <h2 id="lesson-title">Loading Lessons...</h2>
+        <div id="lesson-content" class="lesson-content">
+            <p>Please wait a moment.</p>
+        </div>
+        <div class="navigation">
+            <button id="prev-btn" onclick="prevLesson()" disabled>&lt; Previous</button>
+            <button id="next-btn" onclick="nextLesson()" disabled>Next &gt;</button>
+        </div>
+    </div>
+
+    <div id="terminal-container"></div>
+
+    <script>
+        // --- LESSON MANAGEMENT ---
+        let lessons = [];
+        let currentLesson = 0;
+        const lessonTitleEl = document.getElementById('lesson-title');
+        const lessonContentEl = document.getElementById('lesson-content');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function showLesson(index) {
+            if (lessons.length === 0) return;
+            const lesson = lessons[index];
+            lessonTitleEl.innerText = lesson.title;
+            lessonContentEl.innerHTML = lesson.content;
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === lessons.length - 1);
+        }
+
+        function nextLesson() {
+            if (currentLesson < lessons.length - 1) {
+                currentLesson++;
+                showLesson(currentLesson);
+            }
+        }
+
+        function prevLesson() {
+            if (currentLesson > 0) {
+                currentLesson--;
+                showLesson(currentLesson);
+            }
+        }
+
+        // --- DATA FETCHING ---
+        fetch("{{ url_for('static', filename='lessons.json') }}")
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                lessons = data;
+                if (lessons.length > 0) {
+                    showLesson(currentLesson);
+                } else {
+                    lessonTitleEl.innerText = "No Lessons Found";
+                    lessonContentEl.innerHTML = "<p>The lesson file is empty.</p>";
+                }
+            })
+            .catch(error => {
+                console.error('Error loading lessons:', error);
+                lessonTitleEl.innerText = "Error";
+                lessonContentEl.innerHTML = "<p>Could not load lesson file.</p>";
+            });
+
+        // --- TERMINAL SETUP ---
+        const term = new Terminal({
+            cursorBlink: true,
+            theme: { background: '#1e1e1e' },
+            scrollback: 1000 // Increase scrollback buffer
+        });
+        const fitAddon = new FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+        term.open(document.getElementById('terminal-container'));
+        fitAddon.fit();
+        term.focus();
+
+        // --- WEBSOCKET CONNECTION ---
+        const protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
+        const url = protocol + location.host + '/terminal';
+        const ws = new WebSocket(url);
+
+        // Event handler for receiving messages from the server
+        ws.onmessage = (event) => {
+            // **IMPROVED FIX:** Use the callback of term.write to guarantee
+            // that scrolling happens *after* the data has been rendered.
+            term.write(event.data, () => {
+                term.scrollToBottom();
+            });
+        };
+
+        function disableTerminal(message) {
+            term.setOption('disableStdin', true); // Make terminal read-only
+            term.write(`\r\n\r\n[${message}]`);
+        }
+
+        // Event handler for when the connection closes
+        ws.onclose = () => {
+            disableTerminal('CONNECTION CLOSED');
+        };
+
+        // Event handler for connection errors
+        ws.onerror = (error) => {
+            console.error('WebSocket Error:', error);
+            disableTerminal('CONNECTION ERROR');
+        };
+
+        // Event handler for when the user types in the terminal
+        term.onData((data) => {
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send(data);
+            }
+        });
+
+        // Adjust terminal size on window resize
+        window.onresize = () => {
+            fitAddon.fit();
+        };
+    </script>
+</body>
+</html>
+
