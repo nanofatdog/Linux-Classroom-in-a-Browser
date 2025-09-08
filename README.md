@@ -69,8 +69,8 @@
 
 1.  **Clone a repository:**
     ```bash
-    git clone [https://github.com/your-username/linux-classroom.git](https://github.com/your-username/linux-classroom.git)
-    cd linux-classroom
+    git clone https://github.com/nanofatdog/Linux-Classroom-in-a-Browser.git
+    cd Linux-Classroom-in-a-Browser
     ```
 
 2.  **ตั้งค่า Environment และติดตั้ง Libraries:**
@@ -79,7 +79,7 @@
     #### **วิธี A: สำหรับผู้ใช้ Conda/Anaconda (แนะนำ)**
     * สร้าง environment ใหม่ชื่อ `linux-class` และติดตั้ง Python:
     ```bash
-    conda create --name linux-class python=3.11 -y
+    conda create --name linux-class python=3.10 -y
     ```
     * เปิดใช้งาน environment:
     ```bash
