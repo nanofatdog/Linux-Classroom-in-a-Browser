@@ -5,6 +5,7 @@
 ## update 2025-09-10
 ```bash
  สามารถใช่ IP ของแต่ละ student ได้แล้วครับ !
+ และ สามารถ ssh หาเครื่องเพื่อนนักเรียนด้วยกันไ้ดครับ (user : student ,  password : student)
 ```
 ![image](https://github.com/nanofatdog/Linux-Classroom-in-a-Browser/blob/main/image/demo2.png)
 
