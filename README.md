@@ -6,6 +6,8 @@
 ```bash
  สามารถใช่ IP ของแต่ละ student ได้แล้วครับ !
 ```
+![image](https://github.com/nanofatdog/Linux-Classroom-in-a-Browser/blob/main/image/demo2.png)
+
 แต่ละเซสชันของผู้ใช้จะถูกแยกออกจากกันอย่างสมบูรณ์ใน Docker container ส่วนตัว ทำให้ผู้เรียนสามารถทดลองทุกอย่างได้อย่างอิสระโดยไม่ส่งผลกระทบต่อระบบหลักหรือผู้ใช้งานคนอื่น
 ![image](https://github.com/nanofatdog/Linux-Classroom-in-a-Browser/blob/main/image/demo1.png)
 
