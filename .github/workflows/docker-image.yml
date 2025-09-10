@@ -1,0 +1,47 @@
+# ชื่อของ Workflow นี้
+name: Linux-Classroom-in-a-Browser
+
+# กำหนดว่าจะให้ Workflow ทำงานเมื่อไหร่
+on:
+  # ทำงานเมื่อมีการ push ไปยัง branch 'main'
+  push:
+    branches: [ "main" ]
+  # (ทางเลือก) ทำงานเมื่อมี pull request มายัง branch 'main'
+  pull_request:
+    branches: [ "main" ]
+
+# กำหนดค่าตัวแปรที่จะใช้ใน Workflow
+env:
+  # !! สำคัญ: เปลี่ยน 'nanofatdog' เป็นชื่อ username ของคุณบน Docker Hub !!
+  IMAGE_NAME: nanofatdog/linux-classroom
+
+# กำหนด Job ที่จะให้ทำงาน
+jobs:
+  build_and_push:
+    # กำหนดให้ Job นี้ทำงานบน Virtual Machine ของ GitHub ที่เป็น Ubuntu เวอร์ชันล่าสุด
+    runs-on: ubuntu-latest
+
+    # ขั้นตอนการทำงานของ Job นี้
+    steps:
+      # 1. Checkout a repository
+      #    - ดาวน์โหลดโค้ดของคุณมาไว้ใน Virtual Machine
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Log in to Docker Hub
+      #    - ใช้ Action สำเร็จรูปในการ Login เข้าสู่ Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 3. Build and push Docker image
+      #    - สร้าง Docker Image และ push ขึ้นไปที่ Docker Hub
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE_NAME }}:latest
+
