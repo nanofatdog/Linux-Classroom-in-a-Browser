@@ -5,6 +5,9 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update package lists and install necessary software
+# - iputils-ping provides the 'ping' command
+# - iproute2 provides the modern 'ip addr' command
+# - net-tools provides the legacy 'ifconfig' command
 RUN apt-get update && apt-get install -y \
     nano \
     curl \
@@ -13,10 +16,12 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python-is-python3 \
     build-essential \
+    iputils-ping \
+    iproute2 \
+    net-tools \
     && rm -rf /var/lib/apt/lists/*
 
-# ** FIX: Remove the file that enables the 'externally-managed' environment error **
-# This makes pip work globally, which is simpler for a learning environment.
+# FIX: Remove the file that enables the 'externally-managed' environment error
 RUN find /usr/lib/ -name "EXTERNALLY-MANAGED" -exec rm {} \;
 
 # Create a non-root user 'student' for security
@@ -27,13 +32,10 @@ USER student
 WORKDIR /home/student
 
 # Install the Rust toolchain (rustc, cargo, etc.) using the official rustup installer
-# The '-y' flag automates the installation process
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Add Cargo's bin directory to the PATH environment variable.
-# This makes 'rustc' and 'cargo' commands available in the shell.
 ENV PATH="/home/student/.cargo/bin:${PATH}"
 
-# The command to run when the container starts. It will launch a bash shell
-# as the 'student' user with the updated PATH.
+# The command to run when the container starts.
 CMD ["/bin/bash"]
